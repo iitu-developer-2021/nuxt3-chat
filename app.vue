@@ -1,27 +1,36 @@
 <template>
-  <div>
-    <el-row class="mb-4">
-      <el-button>Default</el-button>
-      <el-button type="primary">Primary</el-button>
-      <el-button type="success">Success</el-button>
-      <el-button type="info">Info</el-button>
-      <el-button type="warning">Warning</el-button>
-      <el-button type="danger">Danger</el-button>
-    </el-row>
-    <el-button-group class="ml-4">
-      <el-button type="primary" :icon="Edit" />
-      <el-button type="primary" :icon="Share" />
-      <el-button type="primary" :icon="Delete" />
-    </el-button-group>
+  <NuxtLayout example="routing/pages">
+    <NuxtLoadingIndicator />
+    <NuxtPage />
 
-    <el-button-group>
-      <el-button type="primary" :icon="ArrowLeft">Previous Page</el-button>
-      <el-button type="primary">
-        Next Page<el-icon class="el-icon--right"><ArrowRight /></el-icon>
-      </el-button>
-    </el-button-group>
-  </div>
+    <template #nav>
+      <nav class="flex align-center gap-4 p-4">
+        <NuxtLink to="/" class="n-link-base"> Home </NuxtLink>
+        <NuxtLink to="/about" class="n-link-base"> About </NuxtLink>
+        <NuxtLink to="/parent" class="n-link-base"> Parent (index) </NuxtLink>
+        <NuxtLink to="/parent/b" class="n-link-base"> Parent (b) </NuxtLink>
+        <button
+          class="n-link-base"
+          @click="$router.push(`/parent/reload-${(Math.random() * 100).toFixed()}`)"
+        >
+          Keyed child
+        </button>
+        <button
+          class="n-link-base"
+          @click="$router.push(`/parent/static-${(Math.random() * 100).toFixed()}`)"
+        >
+          Non-keyed child
+        </button>
+      </nav>
+    </template>
+
+    <template #footer>
+      <div class="text-center p-4 op-50">
+        Current route: <code>{{ route.path }}</code>
+      </div>
+    </template>
+  </NuxtLayout>
 </template>
 <script setup lang="ts">
-import { ArrowLeft, ArrowRight, Delete, Edit, Share } from '@element-plus/icons-vue'
+const route = useRoute()
 </script>
