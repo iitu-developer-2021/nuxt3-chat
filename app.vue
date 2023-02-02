@@ -23,11 +23,5 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  ArrowLeft,
-  ArrowRight,
-  Delete,
-  Edit,
-  Share,
-} from '@element-plus/icons-vue'
+import { ArrowLeft, ArrowRight, Delete, Edit, Share } from '@element-plus/icons-vue'
 </script>
