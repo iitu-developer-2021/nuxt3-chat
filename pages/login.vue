@@ -1,94 +1,138 @@
 <template>
   <div class="login">
-    <el-card class="login__wrapper">
-      <h2 class="login__title">Авторизация</h2>
-      <el-form ref="form" class="login-form">
-        <el-form-item prop="username">
-          <el-input placeholder="Username" :prefix-icon="User"> </el-input>
+    <div class="login__wrapper">
+      <el-form
+        :model="form"
+        label-width="120px"
+        size="large"
+        label-position="top"
+        class="login-form"
+      >
+        <h1 class="login-form__title">Вход</h1>
+
+        <el-form-item label="Логин" class="login-form__item">
+          <el-input v-model="form.username" placeholder="Введите логин" />
         </el-form-item>
-        <el-form-item prop="password">
-          <el-input placeholder="Password" type="password" :prefix-icon="Lock"></el-input>
+
+        <el-form-item label="Пароль" class="login-form__item login-form__item--reset-space">
+          <el-input v-model="form.password" type="password" placeholder="Введите пароль" />
         </el-form-item>
-        <el-form-item>
-          <el-button class="login-form__button" type="primary" native-type="submit" block>
-            Login
-          </el-button>
+
+        <el-form-item class="login-form__item login-form__item--reset-space">
+          <div class="login-form__field">
+            <el-checkbox-group v-model="form.type">
+              <el-checkbox label="Запонить меня" name="type" />
+            </el-checkbox-group>
+            <NuxtLink to="/forget" class="login-form__forget">Забыли пароль?</NuxtLink>
+          </div>
         </el-form-item>
-        <a class="login-form__forgot-password" href="https://oxfordinformatics.com/"
-          >Forgot password ?</a
-        >
+
+        <el-form-item class="login-form__item">
+          <el-button type="primary" class="login-form__btn">Войти</el-button>
+          <p class="login-form__text">Впервые на нашем сервисе?</p>
+          <el-button class="login-form__btn">Зарегистрироваться</el-button>
+        </el-form-item>
+
+        <el-divider class="login-form__divider" />
+
+        <el-form-item class="login-form__item login-form__item--reset-space">
+          <el-space size="large" alignment="center" class="login-form__socials">
+            <el-button class="login-form__btn">
+              <img src="~/assets/icons/google.svg" alt="google-icon" />
+            </el-button>
+            <el-button class="login-form__btn">
+              <img src="~/assets/icons/yandex.svg" alt="yandex-icon" />
+            </el-button>
+            <el-button class="login-form__btn">
+              <img src="~/assets/icons/mail.svg" alt="mail-icon" />
+            </el-button>
+          </el-space>
+        </el-form-item>
       </el-form>
-    </el-card>
+    </div>
   </div>
 </template>
-
 <script lang="ts" setup>
-import { User, Lock } from '@element-plus/icons-vue'
+const form = reactive({
+  username: '',
+  password: '',
+})
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-$teal: rgb(0, 124, 137);
-
+<style lang="scss" scoped>
 .login {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+  margin-top: 45px;
+  padding: 0 15px;
 
-  &__title {
-    font-family: 'Open Sans', Roboto, sans-serif;
-    letter-spacing: 1px;
-    padding-bottom: 20px;
-    text-align: center;
+  &__wrapper {
+    max-width: 400px;
+    width: 100%;
+    padding: 15px 40px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 }
 
 .login-form {
-  width: 330px;
-
-  &__button {
-    width: 100%;
-    margin-top: 40px;
-  }
-
-  &__forgot-password {
-    color: $teal;
-    margin-top: 10px;
-    text-decoration: none;
+  &__title {
     text-align: center;
+    margin-bottom: 16px;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 33px;
+    color: #2c3e50;
     display: inline-block;
     width: 100%;
+  }
 
-    &:hover,
-    &:active,
-    &:focus {
-      color: lighten($teal, 7);
+  &__item {
+    :deep(label) {
+      font-size: 16px;
+    }
+
+    &--reset-space {
+      margin: 0;
     }
   }
 
-  .el-input__inner:hover {
-    border-color: $teal;
-  }
-
-  .el-button--primary {
-    background: $teal;
-    border-color: $teal;
-
-    &:hover,
-    &.active,
-    &:focus {
-      background: lighten($teal, 7);
-      border-color: lighten($teal, 7);
-    }
-  }
-
-  .el-card {
-    width: 340px;
+  &__field {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 9px 0;
+  }
+
+  &__forget {
+    text-decoration: none;
+  }
+
+  &__btn {
+    width: 100%;
+
+    img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+  }
+
+  &__divider {
+    margin: 0 0 5px 0;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    color: #71757a;
+    width: 100%;
+  }
+
+  &__socials {
     justify-content: center;
-    padding-top: 0;
-    padding-bottom: 30px;
+    width: 100%;
+    margin: 15px 0;
   }
 }
 </style>
