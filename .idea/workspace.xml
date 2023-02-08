@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc61ab44-43be-416c-ba40-6d7d2d383f61" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/icons/google.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/mail.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/yandex.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/registration.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.vue" beforeDir="false" afterPath="$PROJECT_DIR$/app.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

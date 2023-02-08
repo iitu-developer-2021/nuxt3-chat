@@ -8,17 +8,17 @@
         label-position="top"
         class="login-form"
       >
-        <h1 class="login-form__title">Вход</h1>
+        <h1 class="login__title">Вход</h1>
 
         <el-form-item label="Логин" class="login-form__item">
           <el-input v-model="form.username" placeholder="Введите логин" />
         </el-form-item>
 
-        <el-form-item label="Пароль" class="login-form__item login-form__item--reset-space">
+        <el-form-item label="Пароль" class="login-form__item no-space">
           <el-input v-model="form.password" type="password" placeholder="Введите пароль" />
         </el-form-item>
 
-        <el-form-item class="login-form__item login-form__item--reset-space">
+        <el-form-item class="login-form__item no-space">
           <div class="login-form__field">
             <el-checkbox-group v-model="form.type">
               <el-checkbox label="Запонить меня" name="type" />
@@ -30,12 +30,14 @@
         <el-form-item class="login-form__item">
           <el-button type="primary" class="login-form__btn">Войти</el-button>
           <p class="login-form__text">Впервые на нашем сервисе?</p>
-          <el-button class="login-form__btn">Зарегистрироваться</el-button>
+          <el-button class="login-form__btn" @click="$router.push('/registration')"
+            >Зарегистрироваться</el-button
+          >
         </el-form-item>
 
         <el-divider class="login-form__divider" />
 
-        <el-form-item class="login-form__item login-form__item--reset-space">
+        <el-form-item class="login-form__item no-space">
           <el-space size="large" alignment="center" class="login-form__socials">
             <el-button class="login-form__btn">
               <img src="~/assets/icons/google.svg" alt="google-icon" />
@@ -65,16 +67,6 @@ const form = reactive({
   margin-top: 45px;
   padding: 0 15px;
 
-  &__wrapper {
-    max-width: 400px;
-    width: 100%;
-    padding: 15px 40px;
-    background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-  }
-}
-
-.login-form {
   &__title {
     text-align: center;
     margin-bottom: 16px;
@@ -86,14 +78,32 @@ const form = reactive({
     width: 100%;
   }
 
+  &__wrapper {
+    max-width: 400px;
+    width: 100%;
+    padding: 15px 30px;
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+}
+
+.login-form {
   &__item {
     :deep(label) {
       font-size: 16px;
     }
+  }
 
-    &--reset-space {
-      margin: 0;
-    }
+  &__btn {
+    width: 100%;
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 16px;
+    line-height: 22px;
+    color: #71757a;
+    width: 100%;
   }
 
   &__field {
@@ -107,26 +117,8 @@ const form = reactive({
     text-decoration: none;
   }
 
-  &__btn {
-    width: 100%;
-
-    img {
-      width: 25px;
-      height: 25px;
-      cursor: pointer;
-    }
-  }
-
   &__divider {
     margin: 0 0 5px 0;
-  }
-
-  &__text {
-    text-align: center;
-    font-size: 16px;
-    line-height: 22px;
-    color: #71757a;
-    width: 100%;
   }
 
   &__socials {
@@ -134,5 +126,17 @@ const form = reactive({
     width: 100%;
     margin: 15px 0;
   }
+
+  &__btn {
+    img {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+    }
+  }
+}
+
+.no-space {
+  margin: 0;
 }
 </style>
